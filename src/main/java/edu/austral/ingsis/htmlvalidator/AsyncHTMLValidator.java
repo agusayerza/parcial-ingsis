@@ -1,3 +1,3 @@
 package edu.austral.ingsis.htmlvalidator;
 
-public interface AsyncHTMLValidator {}
+public interface AsyncHTMLValidator extends HTMLValidator {}

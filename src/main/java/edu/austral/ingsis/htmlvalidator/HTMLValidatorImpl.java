@@ -21,6 +21,16 @@ public class HTMLValidatorImpl implements HTMLValidator {
         return result;
     }
 
+    public PartialValidationResult validateNode(HTMLElement e, Rule r){
+        PartialValidationResult partialResult = new PartialValidationResult(null, e);
+        if(r.appliesTo(e.getModel())){
+            if(!r.validate(e)){
+                partialResult = new PartialValidationResult(r, e);
+            }
+        }
+        return partialResult;
+    }
+
     private void validateNode(HTMLElement e, Rule r, ValidationResultImpl partialResult){
         if(r.appliesTo(e.getModel())){
             if(!r.validate(e)){

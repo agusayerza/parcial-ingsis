@@ -1,10 +1,12 @@
-package edu.austral.ingsis.htmlvalidator;
+package edu.austral.ingsis.htmlvalidator.dialect;
+
+import edu.austral.ingsis.htmlvalidator.BasicTagNames;
+import edu.austral.ingsis.htmlvalidator.HTMLElementModel;
+import edu.austral.ingsis.htmlvalidator.HTMLElementModelImpl;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
-import java.util.function.Function;
-import java.util.function.Predicate;
 
 public class BasicHTMLDialect implements Dialect {
 

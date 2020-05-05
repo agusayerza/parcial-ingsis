@@ -6,15 +6,17 @@ import java.util.Map;
 import java.util.Optional;
 
 public class ParentHTMLElement implements HTMLElement {
-    List<HTMLElement> children;
-    Map<String, String> attributes;
-    Map<String, String> style;
-    HTMLElementModel model;
+    private List<HTMLElement> children;
+    private Map<String, String> attributes;
+    private Map<String, String> style;
+    private HTMLElementModel model;
+    private String innerHTML = ""; // todo: maybe an optional is better
 
-    public ParentHTMLElement(HTMLElementModel model, List<HTMLElement> children, Map<String, String> attributes, Map<String, String> style) {
+    public ParentHTMLElement(HTMLElementModel model, List<HTMLElement> children, Map<String, String> attributes, Map<String, String> style, String innerHTML) {
         this.children = children;
         this.attributes = attributes;
         this.style = style;
+        this.innerHTML = innerHTML;
         this.model = model;
     }
 
@@ -41,5 +43,10 @@ public class ParentHTMLElement implements HTMLElement {
     @Override
     public HTMLElementModel getModel() {
         return model;
+    }
+
+    @Override
+    public String getInnerHTML() {
+        return null;
     }
 }

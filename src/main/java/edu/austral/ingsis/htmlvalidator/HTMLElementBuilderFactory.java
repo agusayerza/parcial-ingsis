@@ -1,12 +1,22 @@
 package edu.austral.ingsis.htmlvalidator;
 
+import edu.austral.ingsis.htmlvalidator.dialect.BasicHTMLDialect;
+import edu.austral.ingsis.htmlvalidator.dialect.Dialect;
+
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class HTMLElementBuilderFactory implements HTMLElementBuilder{
 
+    private List<HTMLElement> children = new ArrayList<>();
+    private Map<String, String> attributes = new HashMap<>();
+    private Map<String, String> style = new HashMap<>();
+    private String text = "";
     private final Dialect dialect = new BasicHTMLDialect();
     private final HTMLElementModel model;
-    private final HTMLElement element;
+
     public HTMLElementBuilder createFrom(String tagName) {
         if(dialect.declares(tagName)){
             // Risky
@@ -17,36 +27,50 @@ public class HTMLElementBuilderFactory implements HTMLElementBuilder{
 
     private HTMLElementBuilderFactory(HTMLElementModel model){
         this.model = model;
-        this.element = new
     }
 
     @Override
     public HTMLElementBuilder withChildren(List<HTMLElement> children) {
-        return null;
+        if(model.canHaveChildren()){
+            this.children.addAll(children);
+        }
+        return this;
     }
 
     @Override
     public HTMLElementBuilder addChild(HTMLElement child) {
+        if(model.canHaveChildren()){
+            this.children.add(child);
+        }
         return null;
     }
 
     @Override
     public HTMLElementBuilder addText(String child) {
-        return null;
+        text = child;
+        return this;
     }
 
     @Override
     public HTMLElementBuilder withAttribute(String name, String value) {
-        return null;
+//        if(model.hasAttribute(name)){  will implement if have spare time
+            attributes.put(name, value);
+//        }
+        return this;
     }
 
     @Override
     public HTMLElementBuilder withStyle(String name, String value) {
-        return null;
+        style.put(name, value);
+        return this;
     }
 
     @Override
     public HTMLElement build() {
-        return null;
+        if(model.canHaveChildren()){
+            return new ParentHTMLElement(model, children, attributes, style,  text);
+        }else{
+            return new FinalHTMLElement(attributes, style, model, text);
+        }
     }
 }

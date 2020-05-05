@@ -11,6 +11,7 @@ public interface HTMLElement {
     Map<String, String> getAttributes();
     Map<String, String> getStyle();
     HTMLElementModel getModel();
+    String getInnerHTML();
 
 
 }

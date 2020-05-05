@@ -1,4 +1,6 @@
-package edu.austral.ingsis.htmlvalidator;
+package edu.austral.ingsis.htmlvalidator.dialect;
+
+import edu.austral.ingsis.htmlvalidator.HTMLElementModel;
 
 import java.util.List;
 import java.util.Optional;

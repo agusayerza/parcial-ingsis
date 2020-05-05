@@ -15,7 +15,7 @@ public class LangInHtml implements Rule {
     @Override
     public boolean appliesTo(HTMLElementModel model) {
         // if i had more time i would have a better way of checking
-        return model.getTAG().toLowerCase().equals(model.getTAG().toLowerCase());
+        return model.getTAG().toLowerCase().equals("html");
     }
 
     @Override

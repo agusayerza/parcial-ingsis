@@ -23,6 +23,8 @@ public class BasicHTMLDialect implements Dialect {
         elementModels.add(new HTMLElementModelImpl(BasicTagNames.DIV, new ArrayList<>(), true));
         elementModels.add(new HTMLElementModelImpl(BasicTagNames.HEAD, new ArrayList<>(), true));
         elementModels.add(new HTMLElementModelImpl(BasicTagNames.IMG, new ArrayList<>(), false));
+        elementModels.add(new HTMLElementModelImpl(BasicTagNames.LINK, new ArrayList<>(), false));
+        
     }
 
     @Override

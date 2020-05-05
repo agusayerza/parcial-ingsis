@@ -15,7 +15,8 @@ public class ValidationResultImpl implements ValidationResult {
     }
 
     public void addViolatedRule(HTMLElement e, Rule r){
-        violatedRules.add(e.getTAG() + " violated " + r.getName());
+        //violatedRules.add(e.getTAG() + " violated " + r.getName());
+        violatedRules.add(r.getName());
     }
 
     @Override

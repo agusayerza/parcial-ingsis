@@ -30,7 +30,7 @@ public class HTMLValidatorImpl implements HTMLValidator {
 
         if(e.getChildren().isPresent()){
             for (HTMLElement child: e.getChildren().get()) {
-                validateNode(e, r, partialResult);
+                validateNode(child, r, partialResult);
             }
         }
     }

@@ -1,6 +1,8 @@
 package edu.austral.ingsis.htmlvalidator;
 
 
+import edu.austral.ingsis.htmlvalidator.renderer.HTMLRenderer;
+
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
@@ -48,5 +50,10 @@ public class ParentHTMLElement implements HTMLElement {
     @Override
     public String getInnerHTML() {
         return null;
+    }
+
+    @Override
+    public String render(HTMLRenderer renderer) {
+        return renderer.render(this);
     }
 }

@@ -1,20 +1,25 @@
 package edu.austral.ingsis.htmlvalidator;
 
+import edu.austral.ingsis.htmlvalidator.rules.Rule;
+
 import java.util.ArrayList;
 import java.util.List;
 
 public class ValidationResultImpl implements ValidationResult {
 
-    boolean isValid = true;
-    List<String> valiolatedRules = new ArrayList<>();
+    List<String> violatedRules = new ArrayList<>();
 
     @Override
     public boolean isValid() {
-        return false;
+        return violatedRules.isEmpty();
+    }
+
+    public void addViolatedRule(HTMLElement e, Rule r){
+        violatedRules.add(e.getTAG() + " violated " + r.getName());
     }
 
     @Override
     public List<String> getViolatedRules() {
-        return null;
+        return violatedRules;
     }
 }

@@ -15,14 +15,18 @@ public class HTMLElementBuilderFactory implements HTMLElementBuilder{
     private Map<String, String> style = new HashMap<>();
     private String text = "";
     private final Dialect dialect = new BasicHTMLDialect();
-    private final HTMLElementModel model;
+    private HTMLElementModel model;
 
     public HTMLElementBuilder createFrom(String tagName) {
         if(dialect.declares(tagName)){
-            // Risky
-            return new HTMLElementBuilderFactory(dialect.get(tagName).get());
+            if(dialect.get(tagName).isPresent())
+                return new HTMLElementBuilderFactory(dialect.get(tagName).get());
         }
         throw new UndeclaredElementException();
+    }
+
+    HTMLElementBuilderFactory(){
+
     }
 
     private HTMLElementBuilderFactory(HTMLElementModel model){
@@ -42,7 +46,7 @@ public class HTMLElementBuilderFactory implements HTMLElementBuilder{
         if(model.canHaveChildren()){
             this.children.add(child);
         }
-        return null;
+        return this;
     }
 
     @Override

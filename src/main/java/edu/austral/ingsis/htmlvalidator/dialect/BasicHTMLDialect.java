@@ -16,6 +16,7 @@ public class BasicHTMLDialect implements Dialect {
     public BasicHTMLDialect() {
         // really missing scala over here
         this.elementModels = new ArrayList<>();
+        elementModels.add(new HTMLElementModelImpl(BasicTagNames.HTML, new ArrayList<>(), true));
         elementModels.add(new HTMLElementModelImpl(BasicTagNames.BODY, new ArrayList<>(), true));
         elementModels.add(new HTMLElementModelImpl(BasicTagNames.ARTICLE, new ArrayList<>(), true));
         elementModels.add(new HTMLElementModelImpl(BasicTagNames.BR, new ArrayList<>(), false));

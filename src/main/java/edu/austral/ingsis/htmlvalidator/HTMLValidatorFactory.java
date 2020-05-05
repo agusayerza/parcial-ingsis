@@ -25,9 +25,15 @@ public class HTMLValidatorFactory {
                 this.rules.add(existingRules.get(r));
             }else throw new UnknownRuleException("Unknown rule: " + r);
         }
+        return new HTMLValidatorImpl(this.rules);
     }
 
     public HTMLValidator createFromRules(List<String> rules) throws UnknownRuleException {
-
+        for(String r : rules) {
+            if(existingRules.containsKey(r)){
+                this.rules.add(existingRules.get(r));
+            }else throw new UnknownRuleException("Unknown rule: " + r);
+        }
+        return new HTMLValidatorImpl(this.rules);
     }
 }
